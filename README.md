@@ -1,6 +1,6 @@
 # InfynityApp
 
-<!-- Implentations in place -->
+** Implentations in place **
 
  1.The Title in the Index.html is set to 'Infynity CRM | Lender Products' along with the appropriate logo to be displayed at Tab title in the browser.
  2.Lender Table has been rendered using the JSON provided.
@@ -18,7 +18,7 @@
 
  
 
- <!-- Scope for improvement with more time -->
+** Scope for improvement with more time **
 
 1.Test Case for the components and service.
 2.Inclusion of ModalModule to achieve a advanced Modal window for Edit table.
