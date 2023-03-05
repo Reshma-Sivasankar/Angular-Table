@@ -1,0 +1,53 @@
+<div *ngIf="loading">
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only" id="loading"></span>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!loading">
+    <div *ngIf="!isError; else noData" class="data-table">
+        <h3 class="m-4">Lender Maintenance</h3>
+        <table class="table-wrapper" >
+        
+            <thead>
+                <tr>
+                    <th id="header-1" rowspan="2"  *ngFor="let header of headers.thead1" >{{header}}</th>
+                    <th colspan="3">Commission</th>
+                    <th rowspan="2" *ngFor="let header of headers.thead2"> {{header}} </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let subheader of headers.tSubHead" >{{subheader}}</th>
+                </tr>
+            </thead>
+            <tbody class="scrollbar" id="scrollbarStyle">
+                <tr *ngFor="let row of dataSource;">
+                    <td *ngFor="let prop of propertyType">{{row.attributes[prop]}}</td>
+                    <td><input disabled="true" type="checkbox" [checked]="row.attributes['is_active']"></td>
+                    <td><input disabled="true" type="checkbox" [checked]="row.attributes['is_hidden']"></td>
+                    <td id="editButton" ng-disabled="row.attributes['edit']" (click)="dialog.showModal()">🖉
+                        Edit
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #noData>
+        <div  class="alert alert-warning">
+            <strong>Error!</strong> Unable to load the details.
+            <button title="Reload Page" type="button" class="btn btn-primary" (click)="reload()">Try Again!</button>
+        </div>
+    </ng-template>
+
+    <dialog #dialog>
+        <div>
+         Edit Details
+        </div>
+        <div>
+          <button (click)="dialog.close()">Ok</button>
+        </div>
+      </dialog>
+      
+</div>
+
