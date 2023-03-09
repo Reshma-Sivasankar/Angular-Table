@@ -32,9 +32,9 @@ export class DataTableComponent implements OnInit {
 
         //appending % to the Commission values and Capitalize the first letter of Type values
         this.dataSource.forEach((element: any) => {
-          element['attributes']['upfont_commission'] = "%" + element['attributes']['upfont_commission'];
-          element['attributes']['high_trail_commission'] = "%" + element['attributes']['high_trail_commission'];
-          element['attributes']['low_trail_commission'] = "%" + element['attributes']['low_trail_commission'];
+          this.x.forEach((val: string | number) => 
+            element['attributes'][val] = "%" + element['attributes'][val]
+          );
           element['attributes']['type'] = element['attributes']['type'].charAt(0).toUpperCase() + element['attributes']['type'].slice(1);
         });
       }, (error) => {
