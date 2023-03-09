@@ -20,6 +20,7 @@ export class DataTableComponent implements OnInit {
     tSubHead: ['Upfront', 'Trail High', 'Trail Low'],
     thead2: ['Balance Mutipier', 'Active', 'Hide', 'Edit'],
   };
+  commissionSubHeader:any=['upfont_commission','high_trail_commission','low_trail_commission'];
 
   constructor(private dataService: TableDataService) {
   }
@@ -32,7 +33,7 @@ export class DataTableComponent implements OnInit {
 
         //appending % to the Commission values and Capitalize the first letter of Type values
         this.dataSource.forEach((element: any) => {
-          this.x.forEach((val: string | number) => 
+          this.commissionSubHeader.forEach((val: string | number) => 
             element['attributes'][val] = "%" + element['attributes'][val]
           );
           element['attributes']['type'] = element['attributes']['type'].charAt(0).toUpperCase() + element['attributes']['type'].slice(1);
